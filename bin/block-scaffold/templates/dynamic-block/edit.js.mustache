@@ -13,6 +13,8 @@ export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps();
 
 	return (
-		<div {...blockProps}>{__("Hello from {{title}}", "starter-block-theme")}</div>
+		<div {...blockProps}>
+			{__("Hello from {{title}}", "{{textDomain}}")}
+		</div>
 	);
 }
