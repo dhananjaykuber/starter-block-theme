@@ -45,7 +45,7 @@ class ACF {
 	 */
 	public function acf_json_save_point() {
 
-		return get_template_directory() . '/acf-json';
+		return STARTER_FSE_THEME_TEMP_DIR . '/acf-json';
 	}
 
 	/**
@@ -56,7 +56,7 @@ class ACF {
 	public function acf_json_load_point( $paths ) {
 
 		unset( $paths[0] );
-		$paths[] = get_template_directory() . '/acf-json';
+		$paths[] = STARTER_FSE_THEME_TEMP_DIR . '/acf-json';
 		return $paths;
 	}
 }
