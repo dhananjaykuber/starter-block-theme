@@ -26,6 +26,7 @@ class Theme {
 		// Instantiate classes.
 		Assets::get_instance();
 		Blocks::get_instance();
+		ACF::get_instance();
 
 		// Setup hooks.
 		$this->setup_hooks();
