@@ -208,7 +208,7 @@ const runSearchReplace = (blockDir, data) => {
 /**
  * Generate the block.json file.
  */
-const generateBlockJSONFile = async (blockPath, blockData) => {
+const generateBlockJSONFile = async (blockType, blockPath, blockData) => {
 	const blockJSON = {
 		$schema: "https://schemas.wp.org/trunk/block.json",
 		apiVersion: 3,
@@ -228,9 +228,12 @@ const generateBlockJSONFile = async (blockPath, blockData) => {
 		editorScript: "file:./index.js",
 		editorStyle: "file:./index.css",
 		style: "file:./view.css",
-		render: "file:./render.php",
 		viewScript: "file:./view.js",
 	};
+
+	if (blockType !== "static-block") {
+		blockJSON.render = "file:./render.php";
+	}
 
 	try {
 		fs.writeFileSync(
@@ -276,7 +279,7 @@ const generateBlock = async (blockType) => {
 
 	runSearchReplace(newBlockDir, chunksToReplace);
 
-	generateBlockJSONFile(newBlockDir, blockData);
+	generateBlockJSONFile(blockType, newBlockDir, blockData);
 
 	console.log(
 		`${message.success("\nBlock")} ${message.warning(
