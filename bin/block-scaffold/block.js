@@ -32,11 +32,11 @@ const message = {
 const questions = {
 	blockTitle: {
 		question: "\nEnter the block title:",
-		default: "Dynamic Block",
+		default: "Example Block",
 	},
 	blockSlug: {
 		question: "\nEnter the block slug:",
-		default: "dynamic-block",
+		default: "example-block",
 	},
 	blockNamespace: {
 		question: "\nEnter the block namespace:",
@@ -44,11 +44,11 @@ const questions = {
 	},
 	blockDescription: {
 		question: "\nEnter the block description:",
-		default: "A dynamic block",
+		default: "A example block",
 	},
 	blockKeywords: {
 		question: "\nEnter the block keywords:",
-		default: "dynamic,block",
+		default: "example,block",
 	},
 	blockIcon: {
 		question: "\nEnter the block icon:",
@@ -293,7 +293,7 @@ const generateBlock = async (blockType) => {
 const init = () => {
 	rl.question(
 		`\nWhat type of block would you like to create? \n\n${message.info(
-			"1. Dynamic Block \n2. Static Block \n3. Exit",
+			"1. Dynamic Block \n2. Static Block \n3. Server Side Rendered Block \n4. Exit",
 		)} \n\nEnter your choice: `,
 		async (option) => {
 			switch (parseInt(option)) {
@@ -304,6 +304,9 @@ const init = () => {
 					await generateBlock("static-block");
 					break;
 				case 3:
+					await generateBlock("server-side-rendered-block");
+					break;
+				case 4:
 					console.log(message.info("Exiting..."));
 					rl.close();
 					break;
